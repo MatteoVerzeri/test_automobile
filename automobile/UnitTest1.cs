@@ -102,5 +102,36 @@ namespace automobile
             auto = new Auto("1yy818", "er234tg", "dkdod", "ciao2");
             Assert.Throws<Exception>(() => auto.discesaguidatore());
         }
+        [Fact]
+        public void Testpasseggeri()
+        {
+            auto = new Auto("1yy818", "er234tg", "dkdod", "ciao2");
+            auto.salitaguidatore();
+            auto.accendi();
+            auto.salitapasseggero(3);
+            auto.discesapasseggeri(2);
+            auto.discesapasseggerosingolo();
+            Assert.True(auto.ottienipasseggeri() == 0);
+        }
+        [Fact]
+        public void Testpasseggericoneccezione()
+        {
+            auto = new Auto("1yy818", "er234tg", "dkdod", "ciao2");
+            auto.salitaguidatore();
+            auto.accendi();
+            auto.acceleratore(30);
+           
+            Assert.Throws<Exception>(() => auto.salitapasseggero(2));
+        }
+        [Fact]
+        public void Testpasseggericoneccezione2()
+        {
+            auto = new Auto("1yy818", "er234tg", "dkdod", "ciao2");
+            auto.salitaguidatore();
+            auto.accendi();
+            auto.acceleratore(30);
+
+            Assert.Throws<Exception>(() => auto.discesapasseggerosingolo());
+        }
     }
 }
